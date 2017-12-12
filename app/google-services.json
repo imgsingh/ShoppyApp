@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "874862053679",
+    "firebase_url": "https://shoppyapp-cae2d.firebaseio.com",
+    "project_id": "shoppyapp-cae2d",
+    "storage_bucket": "shoppyapp-cae2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874862053679:android:700bdfe1d60cdbda",
+        "android_client_info": {
+          "package_name": "com.example.akal.shoppyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874862053679-dtemlohedfp6c7clvo1g1il2rum9r1dn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqZEetEg-7du_6k-fLUtntbUosG6KiHaQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

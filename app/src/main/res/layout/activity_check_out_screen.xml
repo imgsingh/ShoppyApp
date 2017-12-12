@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.akal.shoppyapp.CheckOutScreen">
+
+    <TextView
+        android:id="@+id/congrats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="26sp"
+        android:text="Enter The shipping Address"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+
+    <EditText
+        android:id="@+id/street"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Street Address"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_marginTop="71dp"
+        android:layout_below="@+id/congrats"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:id="@+id/city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="City"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_below="@+id/street"
+        android:layout_alignStart="@+id/street"
+        android:layout_marginTop="11dp" />
+
+    <AutoCompleteTextView
+        android:id="@+id/state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="State/Region"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_below="@+id/city"
+        android:layout_alignStart="@+id/city"
+        android:layout_marginTop="13dp" />
+
+    <EditText
+        android:id="@+id/postal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Postal Code"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_below="@+id/state"
+        android:layout_alignStart="@+id/state"
+        android:layout_marginTop="13dp" />
+
+
+    <AutoCompleteTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/country"
+        android:hint="Country"
+        android:layout_below="@+id/postal"
+        android:layout_alignStart="@+id/postal"
+        android:layout_marginTop="14dp"
+        android:layout_alignEnd="@+id/postal" />
+    <Button
+        android:id="@+id/senddata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Proceed"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_below="@+id/country"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/userrr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/congrats"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:text="TextView"
+        android:textColor="@color/md_white_1000"/>
+    <TextView
+        android:id="@+id/userrr1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/congrats"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp"
+        android:text="TextView"
+        android:textColor="@color/md_white_1000"/>
+
+</RelativeLayout>

@@ -1,0 +1,95 @@
+<resources>
+    <string name="app_name">Shoppy</string>
+    <string name="register">New User? <u>Click to Register</u></string>
+
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">All fields required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="auth_failed">Failed. Please retry</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_main_app_page">MainAppPage</string>
+    <string name="title_activity_About_Us">About Us</string>
+    <string name="title_activity_Feedback_Activity">Feedback Activity</string>
+    <string name="title_activity_Faq_Page">FAQ</string>
+    <string name="title_activity_chat_bot">Chatbot</string>
+    <string name="action_settings">Settings</string>
+    <string name="logout">Sign Out</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="title_activity_individual_product">IndividualProduct</string>
+
+    <!-- Add the IP address of the image server here and build the APK or deploy the server somewhere and fix the IP Address in the apk below -->
+    <string name="ip">https://abhinavhanda.me/images/img/</string>
+    <string name="title_activity_main_app">MainApp</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="DB_Feedbacks">Feedbacks</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_auth">AuthActivity</string>
+
+    <string-array name="countries_array">
+        <item>Afghanistan</item>
+        <item>Albania</item>
+        <item>Algeria</item>
+        <item>American Samoa</item>
+        <item>Andorra</item>
+        <item>Angola</item>
+        <item>Anguilla</item>
+        <item>Antarctica</item>
+        <item>India</item>
+    </string-array>
+
+    <string-array name="india_states">
+        <item>Andaman and Nicobar Islands</item>
+        <item>Andhra Pradesh</item>
+        <item>Arunachal Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chandigarh</item>
+        <item>Chhattisgarh</item>
+        <item>Dadra and Nagar Haveli</item>
+        <item>Daman and Diu</item>
+        <item>Delhi</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu and Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Lakshadweep</item>
+        <item>Madhya Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Orissa</item>
+        <item>Pondicherry</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttaranchal</item>
+        <item>Uttar Pradesh</item>
+        <item>West Bengal</item>
+    </string-array>
+
+    <string name="about">We provide various Dog products that are useful for dog owners.\n There are various products like dog biscuits and dog collars.
+    We also provide clothing for dogs like various Dog coats. \n For any questions you can check the faq page and the customer support page</string>
+    <string name="FAQ"></string>
+</resources>
