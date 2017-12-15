@@ -17,6 +17,7 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Akal on 10-11-2017.
@@ -25,6 +26,8 @@ import java.util.List;
 public class ShoppingCartAdapter extends ArrayAdapter {
     Context context;
     ArrayList<ShoppingItem> items;
+    Locale indiaLocale = new Locale("en","IN");
+
 
     public ShoppingCartAdapter(Context context, List<ShoppingItem> items){
         super(context, 0, items);
@@ -62,17 +65,17 @@ public class ShoppingCartAdapter extends ArrayAdapter {
 
         int itemPrice=0;
         try{
-            itemPrice = Integer.valueOf(NumberFormat.getCurrencyInstance()
+            itemPrice = Integer.valueOf(NumberFormat.getCurrencyInstance(indiaLocale)
                     .parse(String.valueOf(currentItem.getPrice()))
                     .toString());
         } catch (ParseException e){
             e.printStackTrace();
         }
         ((TextView) listItemView.findViewById(R.id.cartItemPrice))
-                .setText(NumberFormat.getCurrencyInstance().format(itemPrice));
+                .setText(NumberFormat.getCurrencyInstance(indiaLocale).format(itemPrice));
 
         ((TextView) listItemView.findViewById(R.id.cartItemTotal))
-                .setText(NumberFormat.getCurrencyInstance().format(itemPrice * currentItem.getQuantity()));
+                .setText(NumberFormat.getCurrencyInstance(indiaLocale).format(itemPrice * currentItem.getQuantity()));
         return listItemView;
     }
 }
