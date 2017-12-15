@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SyncStatusObserver;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -48,8 +50,6 @@ public class PaymentPreview extends Activity {
     Button pay = null;
     private ArrayList<String> mUsername = new ArrayList<>();
     ListView mUserList;
-    private ArrayList<String> mUsername1 = new ArrayList<>();
-    ListView mUserList1;
 
     public static final String TAG = "PayUMoneySDK Sample";
 
@@ -68,7 +68,7 @@ public class PaymentPreview extends Activity {
         amt.setText(price);
         pay = (Button) findViewById(R.id.pay);
 
-        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         mUserList = (ListView) findViewById(R.id.listview);
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mUsername);
@@ -83,6 +83,65 @@ public class PaymentPreview extends Activity {
                 mUsername.add(values);
 
                 arrayAdapter.setNotifyOnChange(true);
+            }
+
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+
+        //mUserList1 = (ListView) findViewById(R.id.listview1);
+
+        //final ArrayAdapter<String> arrayAdapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mUsername1);
+        //mUserList1.setAdapter(arrayAdapter1);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(currentFirebaseUser.getUid()).child("cartItems").child("0");
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                if(dataSnapshot != null) {
+                    String values1 = dataSnapshot.getValue().toString();
+                    mUsername.add(values1);
+
+                    arrayAdapter.setNotifyOnChange(true);
+
+                }else {
+                    Toast.makeText(PaymentPreview.this, "No data", Toast.LENGTH_SHORT).show();
+                }
+
+
+                //RetriveData retriveData = dataSnapshot.getValue(RetriveData.class);
+                //String price = dataSnapshot.child("price").getValue(String.class);
+                //String productID = String.valueOf(dataSnapshot.child("productID").getValue(Long.class));
+                //String quantity = String.valueOf(dataSnapshot.child("quantity").getValue(Long.class));
+                //String title = dataSnapshot.child("title").getValue(String.class);
+                //String type = dataSnapshot.child("type").getValue(String.class);
+                //mUsername1.add(retriveData.getDescription());
+                // mUsername.add(price);
+                //mUsername.add(productID);
+                //mUsername.add(quantity);
+                // mUsername.add(title);
+                //mUsername.add(type);
+                //arrayAdapter1.setNotifyOnChange(true);
             }
 
 
@@ -329,13 +388,40 @@ public class PaymentPreview extends Activity {
                 showDialogMessage("cancelled");
             } else if (resultCode == PayUmoneySdkInitilizer.RESULT_FAILED) {
                 Log.i("app_activity", "failure");
+
+                //to merchent
                 BackgroundMail.newBuilder(PaymentPreview.this)
                         .withUsername("gursimranbasra7.gs@gmail.com")
                         .withPassword("9914861333")
                         .withSenderName("Shoppy App")
                         .withMailTo("dudestylish16@gmail.com")
                         .withSubject("New Order")
-                        .withBody(String.valueOf(mUsername)+"items are:"+String.valueOf(mUsername1))
+                        .withBody(String.valueOf(mUsername))
+                        //.withAttachments(fileName)
+                        .withUseDefaultSession(false)
+                        .withProcessVisibility(true)
+                        .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
+                            @Override
+                            public void onSuccess() {
+                                //do some magic
+                            }
+                        })
+                        .withOnFailCallback(new BackgroundMail.OnFailCallback() {
+                            @Override
+                            public void onFail() {
+                                //do some magic
+                            }
+                        })
+                        .send();
+
+                //to client
+                BackgroundMail.newBuilder(PaymentPreview.this)
+                        .withUsername("gursimranbasra7.gs@gmail.com")
+                        .withPassword("9914861333")
+                        .withSenderName("DogStore")
+                        .withMailTo(mUsername.get(2))
+                        .withSubject("Confirmation For Your Order From Shoppy")
+                        .withBody("Thanks for your order.Your order has been done.We usually deliver the product to your home in 2-4days from order.\n"+"\n"+"Item: "+mUsername.get(7)+"\n"+"Price: "+mUsername.get(8)+"\n"+"Quantity:"+mUsername.get(10))
                         //.withAttachments(fileName)
                         .withUseDefaultSession(false)
                         .withProcessVisibility(true)
