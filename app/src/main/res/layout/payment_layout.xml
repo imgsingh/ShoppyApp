@@ -137,6 +137,7 @@
 
     <ListView
         android:id="@+id/listview"
+        android:visibility="invisible"
         android:layout_width="368dp"
         android:layout_height="113dp"
         android:layout_marginBottom="8dp"
@@ -149,18 +150,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-    <ListView
-        android:id="@+id/listview1"
-        android:visibility="invisible"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="240dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.244"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp" />
 
 </android.support.constraint.ConstraintLayout>
