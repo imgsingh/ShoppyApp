@@ -101,11 +101,12 @@ public class MainAppPage extends AppCompatActivity {
         PrimaryDrawerItem share  = new PrimaryDrawerItem().withIdentifier(4).withName("Share App");
         PrimaryDrawerItem feedback  = new PrimaryDrawerItem().withIdentifier(5).withName("Feedback");
         PrimaryDrawerItem delivery  = new PrimaryDrawerItem().withIdentifier(6).withName("Delivery Details");
+        PrimaryDrawerItem locateus  = new PrimaryDrawerItem().withIdentifier(7).withName("Locate Us");
 
 
         final Drawer drawer = new DrawerBuilder().
                 withActivity(this).
-                addDrawerItems(shop, about_us, faq_page, chat_bot, share, feedback, delivery).
+                addDrawerItems(shop, about_us, faq_page, chat_bot, share, feedback, delivery, locateus).
                 withDrawerWidthDp(250).
                 withActionBarDrawerToggle(true).
                 withToolbar(toolbar).
@@ -145,6 +146,12 @@ public class MainAppPage extends AppCompatActivity {
                     drawer.closeDrawer();
                 }else if (drawerItem.getIdentifier() == 6) {
                     Intent intent = new Intent(MainAppPage.this, CheckOutScreen.class);
+                    startActivity(intent);
+                    drawer.closeDrawer();
+                }
+                else if (drawerItem.getIdentifier() == 7) {
+                    Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                            Uri.parse("http://maps.google.com/maps?saddr=30.894817, 75.829668&daddr=30.894817, 75.829668"));
                     startActivity(intent);
                     drawer.closeDrawer();
                 }
