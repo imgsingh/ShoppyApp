@@ -380,6 +380,31 @@ public class PaymentPreview extends Activity {
                         })
                         .send();
 
+                //to client
+                BackgroundMail.newBuilder(PaymentPreview.this)
+                        .withUsername("gursimranbasra7.gs@gmail.com")
+                        .withPassword("9914861333")
+                        .withSenderName("DogStore")
+                        .withMailTo(mUsername.get(2))
+                        .withSubject("Confirmation For Your Order From Shoppy")
+                        .withBody("Thanks for your order.Your order has been done.We usually deliver the product to your home in 2-4days from order.\n"+"\n"+"Item: "+mUsername.get(7)+"\n"+"Price: "+mUsername.get(8)+"\n"+"Quantity:"+mUsername.get(10))
+                        //.withAttachments(fileName)
+                        .withUseDefaultSession(false)
+                        .withProcessVisibility(true)
+                        .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
+                            @Override
+                            public void onSuccess() {
+                                //do some magic
+                            }
+                        })
+                        .withOnFailCallback(new BackgroundMail.OnFailCallback() {
+                            @Override
+                            public void onFail() {
+                                //do some magic
+                            }
+                        })
+                        .send();
+
                 Log.i(TAG, "Success - Payment ID : " + data.getStringExtra(SdkConstants.PAYMENT_ID));
                 String paymentId = data.getStringExtra(SdkConstants.PAYMENT_ID);
                 showDialogMessage("Payment Success Id : " + paymentId);
