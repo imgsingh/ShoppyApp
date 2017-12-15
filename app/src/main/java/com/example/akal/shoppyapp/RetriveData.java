@@ -5,84 +5,79 @@ package com.example.akal.shoppyapp;
  */
 
 public class RetriveData {
-    private String city, country, email, postal, state, street, username;
+    private String description, title, type;
+    Long productID;
+    Long quantity;
+    Long price;
 
-    public RetriveData(String city, String country, String email, String postal, String state, String street, String username) {
-        this.city = city;
-        this.country = country;
-        this.email = email;
-        this.postal = postal;
-        this.state = state;
-        this.street = street;
-        this.username = username;
+    public Long getPrice() {
+        return price;
     }
 
-    public String getCity() {
-        return city;
+    public void setPrice(Long price) {
+        this.price = price;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
 
-    public String getCountry() {
-        return country;
-    }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPostal() {
-        return postal;
-    }
-
-    public void setPostal(String postal) {
-        this.postal = postal;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
+    public RetriveData(String description, String title, String type, Long productID, Long quantity, Long price) {
+        this.description = description;
+        this.price = price;
+        this.title = title;
+        this.type = type;
+        this.productID = productID;
+        this.quantity = quantity;
     }
 
     @Override
     public String toString() {
         return "RetriveData{" +
-                "city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", email='" + email + '\'' +
-                ", postal='" + postal + '\'' +
-                ", state='" + state + '\'' +
-                ", street='" + street + '\'' +
-                ", username='" + username + '\'' +
+                "description='" + description + '\'' +
+                ", title='" + title + '\'' +
+                ", type='" + type + '\'' +
+                ", productID=" + productID +
+                ", quantity=" + quantity +
+                ", price=" + price +
                 '}';
     }
 
-    public String getUsername() {
-        return username;
+    public String getDescription() {
+        return description;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Long getProductID() {
+        return productID;
+    }
+
+    public void setProductID(Long productID) {
+        this.productID = productID;
+    }
+
+    public Long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Long quantity) {
+        this.quantity = quantity;
     }
 }
