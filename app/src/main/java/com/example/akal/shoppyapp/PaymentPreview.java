@@ -5,11 +5,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,14 +21,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
-import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.payUMoney.sdk.PayUmoneySdkInitilizer;
 import com.payUMoney.sdk.SdkConstants;
 
@@ -37,20 +36,20 @@ import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 
 public class PaymentPreview extends Activity {
 
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef;
-    private FirebaseUser user;
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mDatabase;
     TextView amt = null;
     Button pay = null;
-    String email;
-    String username;
+    private ArrayList<String> mUsername = new ArrayList<>();
+    ListView mUserList;
+    private ArrayList<String> mUsername1 = new ArrayList<>();
+    ListView mUserList1;
 
     public static final String TAG = "PayUMoneySDK Sample";
 
@@ -69,38 +68,47 @@ public class PaymentPreview extends Activity {
         amt.setText(price);
         pay = (Button) findViewById(R.id.pay);
 
-        Firebase.setAndroidContext(this);
+        FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        mUserList = (ListView) findViewById(R.id.listview);
 
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mUsername);
+        mUserList.setAdapter(arrayAdapter);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("users/" + currentFirebaseUser.getUid() + "/delivery/");
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onAuthStateChanged(@NonNull final FirebaseAuth firebaseAuth) {
-                user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    myRef = database.getReference("users/" + user.getUid()+"/delivery/");
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String values = dataSnapshot.getValue(String.class);
+                mUsername.add(values);
 
-
-                    myRef.addValueEventListener(new ValueEventListener() {
-
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            username = (String) dataSnapshot.child(user.getDisplayName()).getValue();
-                            email = (String) dataSnapshot.child(user.getEmail()).getValue();
-                        }
-
-
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-                } else {
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                }
+                arrayAdapter.setNotifyOnChange(true);
             }
-        };
+
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+
+
     }
 
     private boolean isDouble(String str) {
@@ -293,8 +301,8 @@ public class PaymentPreview extends Activity {
                         .withPassword("9914861333")
                         .withSenderName("Shoppy App")
                         .withMailTo("dudestylish16@gmail.com")
-                        .withSubject("New Order")
-                        .withBody("this is the body soon"+ "username:" + username + "email" + email)
+                        .withSubject("Confirmation")
+                        .withBody("Order Success")
                         //.withAttachments(fileName)
                         .withUseDefaultSession(false)
                         .withProcessVisibility(true)
@@ -321,13 +329,13 @@ public class PaymentPreview extends Activity {
                 showDialogMessage("cancelled");
             } else if (resultCode == PayUmoneySdkInitilizer.RESULT_FAILED) {
                 Log.i("app_activity", "failure");
-                BackgroundMail.newBuilder(this)
+                BackgroundMail.newBuilder(PaymentPreview.this)
                         .withUsername("gursimranbasra7.gs@gmail.com")
                         .withPassword("9914861333")
                         .withSenderName("Shoppy App")
                         .withMailTo("dudestylish16@gmail.com")
                         .withSubject("New Order")
-                        .withBody("this is the body soon"+ "username:" + username + "email" + email)
+                        .withBody(String.valueOf(mUsername)+"items are:"+String.valueOf(mUsername1))
                         //.withAttachments(fileName)
                         .withUseDefaultSession(false)
                         .withProcessVisibility(true)
@@ -335,7 +343,6 @@ public class PaymentPreview extends Activity {
                             @Override
                             public void onSuccess() {
                                 //do some magic
-                                Toast.makeText(PaymentPreview.this, "Payment Success", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .withOnFailCallback(new BackgroundMail.OnFailCallback() {
