@@ -49,7 +49,7 @@ public class MainAppPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_app_page);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("Shoppy");
+        toolbar.setTitle("DogStore" );
         setSupportActionBar(toolbar);
 
         FloatingActionButton shoppingCart = (FloatingActionButton) findViewById(R.id.cartMainPage);
