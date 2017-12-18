@@ -118,15 +118,164 @@ public class PaymentPreview extends Activity {
         mDatabase.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                if(dataSnapshot != null) {
-                    String values1 = dataSnapshot.getValue().toString();
-                    mUsername.add(values1);
+                String values1 = dataSnapshot.getValue().toString();
+                mUsername.add(values1);
 
-                    arrayAdapter.setNotifyOnChange(true);
+                arrayAdapter.setNotifyOnChange(true);
 
-                }else {
-                    Toast.makeText(PaymentPreview.this, "No data", Toast.LENGTH_SHORT).show();
-                }
+
+
+
+                //RetriveData retriveData = dataSnapshot.getValue(RetriveData.class);
+                //String price = dataSnapshot.child("price").getValue(String.class);
+                //String productID = String.valueOf(dataSnapshot.child("productID").getValue(Long.class));
+                //String quantity = String.valueOf(dataSnapshot.child("quantity").getValue(Long.class));
+                //String title = dataSnapshot.child("title").getValue(String.class);
+                //String type = dataSnapshot.child("type").getValue(String.class);
+                //mUsername1.add(retriveData.getDescription());
+                // mUsername.add(price);
+                //mUsername.add(productID);
+                //mUsername.add(quantity);
+                // mUsername.add(title);
+                //mUsername.add(type);
+                //arrayAdapter1.setNotifyOnChange(true);
+            }
+
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(currentFirebaseUser.getUid()).child("cartItems").child("1");
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String values1 = dataSnapshot.getValue().toString();
+                mUsername.add(values1);
+
+                arrayAdapter.setNotifyOnChange(true);
+
+
+
+
+                //RetriveData retriveData = dataSnapshot.getValue(RetriveData.class);
+                //String price = dataSnapshot.child("price").getValue(String.class);
+                //String productID = String.valueOf(dataSnapshot.child("productID").getValue(Long.class));
+                //String quantity = String.valueOf(dataSnapshot.child("quantity").getValue(Long.class));
+                //String title = dataSnapshot.child("title").getValue(String.class);
+                //String type = dataSnapshot.child("type").getValue(String.class);
+                //mUsername1.add(retriveData.getDescription());
+                // mUsername.add(price);
+                //mUsername.add(productID);
+                //mUsername.add(quantity);
+                // mUsername.add(title);
+                //mUsername.add(type);
+                //arrayAdapter1.setNotifyOnChange(true);
+            }
+
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(currentFirebaseUser.getUid()).child("cartItems").child("2");
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String values1 = dataSnapshot.getValue().toString();
+                mUsername.add(values1);
+
+                arrayAdapter.setNotifyOnChange(true);
+
+
+
+
+                //RetriveData retriveData = dataSnapshot.getValue(RetriveData.class);
+                //String price = dataSnapshot.child("price").getValue(String.class);
+                //String productID = String.valueOf(dataSnapshot.child("productID").getValue(Long.class));
+                //String quantity = String.valueOf(dataSnapshot.child("quantity").getValue(Long.class));
+                //String title = dataSnapshot.child("title").getValue(String.class);
+                //String type = dataSnapshot.child("type").getValue(String.class);
+                //mUsername1.add(retriveData.getDescription());
+                // mUsername.add(price);
+                //mUsername.add(productID);
+                //mUsername.add(quantity);
+                // mUsername.add(title);
+                //mUsername.add(type);
+                //arrayAdapter1.setNotifyOnChange(true);
+            }
+
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(currentFirebaseUser.getUid()).child("cartItems").child("3");
+
+        mDatabase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String values1 = dataSnapshot.getValue().toString();
+                mUsername.add(values1);
+
+                arrayAdapter.setNotifyOnChange(true);
+
+
 
 
                 //RetriveData retriveData = dataSnapshot.getValue(RetriveData.class);
@@ -440,13 +589,17 @@ public class PaymentPreview extends Activity {
                         .send();
 
                 //to client
+                try{
                 BackgroundMail.newBuilder(PaymentPreview.this)
                         .withUsername("gursimranbasra7.gs@gmail.com")
                         .withPassword("9914861333")
                         .withSenderName("DogStore")
                         .withMailTo(mUsername.get(2))
                         .withSubject("Confirmation For Your Order From Shoppy")
-                        .withBody("Thanks for your order.Your order has been done.We usually deliver the product to your home in 2-4days from order.\n"+"\n"+"Item: "+mUsername.get(7)+"\n"+"Price: "+mUsername.get(8)+"\n"+"Quantity:"+mUsername.get(10))
+                        .withBody("Thanks for your order.Your order has been done.We usually deliver the product to your home in 2-4days from order.\n"+
+                                "\n"+"Item: "+mUsername.get(7)+"\n"+"Price: "+mUsername.get(8)+"\n"+"Quantity:"+mUsername.get(10)+
+                                "\n"+"Item: "+mUsername.get(14)+"\n"+"Price: "+mUsername.get(15)+"\n"+"Quantity:"+mUsername.get(17)+
+                                "\n"+"Item: "+mUsername.get(20)+"\n"+"Price: "+mUsername.get(21)+ "\n"+"Quantity:"+mUsername.get(23))
                         //.withAttachments(fileName)
                         .withUseDefaultSession(false)
                         .withProcessVisibility(true)
@@ -463,6 +616,9 @@ public class PaymentPreview extends Activity {
                             }
                         })
                         .send();
+                }catch (Exception e) {
+                    System.out.println("exeption comes");
+                }
 
                 if (data != null) {
                     if (data.getStringExtra(SdkConstants.RESULT).equals("cancel")) {
