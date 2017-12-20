@@ -101,7 +101,7 @@ public class MainAppPage extends AppCompatActivity {
         PrimaryDrawerItem shop = new PrimaryDrawerItem().withIdentifier(0).withName("Hello," + name ).withIcon(R.mipmap.ic_launcher);
         final PrimaryDrawerItem about_us = new PrimaryDrawerItem().withIdentifier(1).withName("About Us");
         PrimaryDrawerItem faq_page = new PrimaryDrawerItem().withIdentifier(2).withName("FAQ's");
-        PrimaryDrawerItem chat_bot  = new PrimaryDrawerItem().withIdentifier(3).withName("Chatbot");
+        PrimaryDrawerItem chat_bot  = new PrimaryDrawerItem().withIdentifier(3).withName("Enquiry Bot");
         PrimaryDrawerItem share  = new PrimaryDrawerItem().withIdentifier(4).withName("Share App");
         PrimaryDrawerItem feedback  = new PrimaryDrawerItem().withIdentifier(5).withName("Feedback");
         PrimaryDrawerItem delivery  = new PrimaryDrawerItem().withIdentifier(6).withName("Delivery Details");
@@ -165,19 +165,16 @@ public class MainAppPage extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_app_page, menu);
 
-        MenuItem item = menu.findItem(R.id.action_search);
-        searchView.setMenuItem(item);
-
         return true;
     }
 
-    MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.action_search);
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
