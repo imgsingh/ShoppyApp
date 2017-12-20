@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,7 +19,7 @@ import java.util.List;
  * Created by Akal on 10-11-2017.
  */
 
-public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> {
+public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> implements Filterable {
     Context context;
     public ShoppingListAdapter(Context context, List<ShoppingItem> items){
         super(context, 0, items);
@@ -51,4 +52,5 @@ public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> {
         cost.setText(currentItem.getPrice());
         return listItemView;
     }
-}
+    }
+

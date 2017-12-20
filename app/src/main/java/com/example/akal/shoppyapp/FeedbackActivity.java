@@ -58,10 +58,10 @@ public class FeedbackActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //drawer items
-        PrimaryDrawerItem shop = new PrimaryDrawerItem().withIdentifier(0).withName("Shop").withIcon(R.mipmap.ic_launcher);
+        PrimaryDrawerItem shop = new PrimaryDrawerItem().withIdentifier(0).withName("Hello").withIcon(R.mipmap.ic_launcher);
         final PrimaryDrawerItem about_us = new PrimaryDrawerItem().withIdentifier(1).withName("About Us");
         PrimaryDrawerItem faq_page = new PrimaryDrawerItem().withIdentifier(2).withName("FAQ's");
-        PrimaryDrawerItem chat_bot  = new PrimaryDrawerItem().withIdentifier(3).withName("Chatbot");
+        PrimaryDrawerItem chat_bot  = new PrimaryDrawerItem().withIdentifier(3).withName("Enquiry Bot");
         PrimaryDrawerItem share  = new PrimaryDrawerItem().withIdentifier(4).withName("Share App");
         PrimaryDrawerItem feedback  = new PrimaryDrawerItem().withIdentifier(5).withName("Feedback");
         PrimaryDrawerItem delivery  = new PrimaryDrawerItem().withIdentifier(6).withName("Delivery Details");
