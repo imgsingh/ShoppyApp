@@ -18,11 +18,13 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -39,6 +41,8 @@ public class MainAppPage extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("items");
+    final FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+    String name = currentFirebaseUser.getDisplayName().toString();
     private Boolean exit = false;
     private ArrayList<ShoppingItem> shoppingItems;
 
@@ -49,7 +53,7 @@ public class MainAppPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_app_page);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle("DogStore" );
+        toolbar.setTitle("DogStore");
         setSupportActionBar(toolbar);
 
         FloatingActionButton shoppingCart = (FloatingActionButton) findViewById(R.id.cartMainPage);
@@ -94,7 +98,7 @@ public class MainAppPage extends AppCompatActivity {
         });
 
         //drawer items
-        PrimaryDrawerItem shop = new PrimaryDrawerItem().withIdentifier(0).withName("Shop").withIcon(R.mipmap.ic_launcher);
+        PrimaryDrawerItem shop = new PrimaryDrawerItem().withIdentifier(0).withName("Hello," + name ).withIcon(R.mipmap.ic_launcher);
         final PrimaryDrawerItem about_us = new PrimaryDrawerItem().withIdentifier(1).withName("About Us");
         PrimaryDrawerItem faq_page = new PrimaryDrawerItem().withIdentifier(2).withName("FAQ's");
         PrimaryDrawerItem chat_bot  = new PrimaryDrawerItem().withIdentifier(3).withName("Chatbot");
@@ -166,8 +170,14 @@ public class MainAppPage extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main_app_page, menu);
+
+        MenuItem item = menu.findItem(R.id.action_search);
+        searchView.setMenuItem(item);
+
         return true;
     }
+
+    MaterialSearchView searchView = (MaterialSearchView) findViewById(R.id.action_search);
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
