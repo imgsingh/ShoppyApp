@@ -19,7 +19,7 @@ import java.util.List;
  * Created by Akal on 10-11-2017.
  */
 
-public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> implements Filterable {
+public class ShoppingListAdapter extends ArrayAdapter<ShoppingItem> {
     Context context;
     public ShoppingListAdapter(Context context, List<ShoppingItem> items){
         super(context, 0, items);

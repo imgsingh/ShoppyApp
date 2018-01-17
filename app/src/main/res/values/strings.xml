@@ -15,6 +15,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="Rs">\u20B9</string>
     <string name="auth_failed">Failed. Please retry</string>
     <string name="title_activity_login">Sign in</string>
     <string name="title_activity_main_app_page">MainAppPage</string>
@@ -28,7 +29,7 @@
     <string name="title_activity_individual_product">IndividualProduct</string>
 
     <!-- Add the IP address of the image server here and build the APK or deploy the server somewhere and fix the IP Address in the apk below -->
-    <string name="ip">https://abhinavhanda.me/images/img/</string>
+    <string name="ip">https://basrags.000webhostapp.com/</string>
     <string name="title_activity_main_app">MainApp</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
